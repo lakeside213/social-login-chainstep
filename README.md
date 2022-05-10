@@ -34,7 +34,7 @@ npm run start
 - **Express** is used as a web application framework
 - **passport-github2** is the passport strategy for authenticating Github.
 - **passport-google-oauth2** is the passport sategy for authenticating google.
-- **passport-linkedin-oauth2** is the passport sategy for authenticating Linkedin.
+- **passport-twitter** is the passport sategy for authenticating Twitter.
 - **cookie-session** is a middleware module the stores our data on the client side.
 - **nodemon** is used to automatically restart the server when the change detected.
 - **ejs** is a templating engine.
