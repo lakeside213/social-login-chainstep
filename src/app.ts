@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Application } from 'express';
 import cookieSession from 'cookie-session';
 import passport from 'passport';
 import { Routes } from '@interfaces/routes.interface';
@@ -9,7 +9,7 @@ import path from 'path';
 passportConfig;
 
 class App {
-  public app: express.Application;
+  public app: Application;
   public port: string | number;
   public env: string;
 
@@ -32,7 +32,7 @@ class App {
     });
   }
 
-  public getServer() {
+  public getServer(): Application {
     return this.app;
   }
 
@@ -54,7 +54,7 @@ class App {
   }
 
   private initializeRoutes(routes: Routes[]) {
-    routes.forEach((route) => {
+    routes.forEach((route: Routes) => {
       this.app.use('/', route.router);
     });
   }

@@ -12,13 +12,7 @@ class UserService {
   }
 
   public findUserById(id: string): User | null {
-    const user: User = this.users.find((user) => {
-      if (user.id === id) {
-        return true;
-      }
-
-      return false;
-    });
+    const user: User = this.users.find((user) => user.id === id);
 
     return user;
   }
