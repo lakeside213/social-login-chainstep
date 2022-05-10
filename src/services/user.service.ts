@@ -32,7 +32,7 @@ class UserService {
     };
 
     this.users.push(user);
-
+    console.log(this.users);
     return user;
   }
 

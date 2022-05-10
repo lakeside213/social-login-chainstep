@@ -32,8 +32,8 @@ class AuthController {
         profile: loginProvider,
       });
     } catch (error) {
-      console.log(error);
-      //   next(error);
+      //   console.log(error);
+      next(error);
     }
   };
 

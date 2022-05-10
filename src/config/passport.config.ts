@@ -2,6 +2,10 @@ import passport from 'passport';
 import 'dotenv/config';
 
 import { Strategy as GoogleStrategy } from 'passport-google-oauth2';
+import AuthService from '@/services/auth.service';
+import { AuthIdentity } from '@/interfaces/auth.interface';
+
+const authService = new AuthService();
 
 passport.serializeUser((req, user, done) => {
   done(null, user);
@@ -21,7 +25,11 @@ passport.use(
       passReqToCallback: true,
     },
     (request, accessToken, refreshToken, profile, done) => {
-      //   console.log(profile, accessToken, refreshToken, 'passport-log-1');
+      const identity: AuthIdentity = {
+        id: profile.id,
+        provider: profile.provider,
+      };
+      authService.login(profile.email, identity);
       done(null, profile);
     },
   ),
