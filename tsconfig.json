@@ -28,7 +28,8 @@
       "@routes/*": ["routes/*"],
       "@services/*": ["services/*"],
       "@utils/*": ["utils/*"],
-      "@views/*": ["views/*"]
+      "@views/*": ["views/*"],
+      "@config/*": ["config/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.json", ".env"],
