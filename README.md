@@ -19,6 +19,7 @@ I used the MD5 hash of the email as the unique identifier for the user in my ema
 ## How to run
 
 ```
+git clone https://github.com/lakeside213/social-login-chainstep.git
 npm install
 npm run start
 ```
