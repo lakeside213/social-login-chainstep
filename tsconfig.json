@@ -33,6 +33,6 @@
       "@dtos/*": ["dtos/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.json", ".env"],
+  "include": ["src/**/*",],
   "exclude": ["node_modules"]
 }
