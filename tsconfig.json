@@ -29,7 +29,8 @@
       "@services/*": ["services/*"],
       "@utils/*": ["utils/*"],
       "@views/*": ["views/*"],
-      "@config/*": ["config/*"]
+      "@config/*": ["config/*"],
+      "@dtos/*": ["dtos/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.json", ".env"],
