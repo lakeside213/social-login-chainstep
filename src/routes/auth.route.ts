@@ -14,27 +14,12 @@ class AuthRoute implements Routes {
 
   private initializeRoutes() {
     this.router.get(
-      `${this.path}login-success`,
-      this.authController.loginSuccess,
-    );
-
-    this.router.get(
-      `${this.path}login-failed`,
-      this.authController.loginFailed,
-    );
-
-    this.router.get(
       `${this.path}google/callback`,
       passport.authenticate('google', {
         scope: ['profile', 'email'],
         failureRedirect: `${this.path}login-failed`,
       }),
       this.authController.logInCallback,
-    );
-
-    this.router.get(
-      `${this.path}google`,
-      passport.authenticate('google', { scope: ['profile', 'email'] }),
     );
 
     this.router.get(
@@ -51,6 +36,20 @@ class AuthRoute implements Routes {
       passport.authenticate('twitter', {
         scope: ['profile', 'email'],
       }),
+    );
+
+    this.router.get(
+      `${this.path}google`,
+      passport.authenticate('google', { scope: ['profile', 'email'] }),
+    );
+
+    this.router.get(
+      `${this.path}login-failed`,
+      this.authController.loginFailed,
+    );
+    this.router.get(
+      `${this.path}login-success`,
+      this.authController.loginSuccess,
     );
   }
 }

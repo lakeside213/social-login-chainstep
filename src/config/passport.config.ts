@@ -5,8 +5,11 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth2';
 import { Strategy as TwitterStrategy } from 'passport-twitter';
 import AuthService from '@/services/auth.service';
 import { AuthIdentity } from '@/interfaces/auth.interface';
+import UserService from '@/services/user.service';
+import { User } from '@/interfaces/user.interface';
 
 const authService = new AuthService();
+const userService = new UserService();
 
 passport.serializeUser((req, user, done) => {
   done(null, user);
@@ -30,7 +33,8 @@ passport.use(
         id: profile.id,
         provider: profile.provider,
       };
-      authService.login(profile.email, identity);
+      const email = profile.email;
+      authService.login(email, identity);
       done(null, profile);
     },
   ),

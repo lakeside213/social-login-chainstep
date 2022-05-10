@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
 import { User } from '@interfaces/user.interface';
-import { AuthProvider } from '@/interfaces/auth.interface';
+import { AuthProvider, RequestWithUser } from '@/interfaces/auth.interface';
 
 class AuthController {
   public logInCallback = async (
@@ -10,29 +10,24 @@ class AuthController {
     next: NextFunction,
   ): Promise<void> => {
     try {
-      console.log('redirect');
-      res.redirect(`/auth/login-success?provider=${AuthProvider.GOOGLE}`);
+      res.redirect(`/auth/login-success`);
     } catch (error) {
       next(error);
     }
   };
 
   public loginSuccess = async (
-    req: Request,
+    req: RequestWithUser,
     res: Response,
     next: NextFunction,
   ): Promise<void> => {
     try {
-      const loginProvider: AuthProvider = req.query.provider as AuthProvider;
-
+      const user: User = req.user;
       res.render('pages/profile.ejs', {
-        name: 'test',
-        pic: 'test',
-        email: 'test',
-        profile: loginProvider,
+        email: user.email,
+        id: user.id,
       });
     } catch (error) {
-      //   console.log(error);
       next(error);
     }
   };
