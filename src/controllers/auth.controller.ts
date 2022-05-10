@@ -1,7 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import passport from 'passport';
-import { User } from '@interfaces/user.interface';
-import { AuthProvider, RequestWithUser } from '@/interfaces/auth.interface';
+import { RequestWithUser } from '@/interfaces/auth.interface';
 
 class AuthController {
   public logInCallback = async (
@@ -22,7 +20,6 @@ class AuthController {
     next: NextFunction,
   ): Promise<void> => {
     try {
-      const user: User = req.user;
       res.render('pages/profile.ejs');
     } catch (error) {
       next(error);

@@ -1,5 +1,4 @@
 import { AuthIdentity } from '@/interfaces/auth.interface';
-import { User } from '@/interfaces/user.interface';
 
 export interface CreateUserDto {
   email: string;

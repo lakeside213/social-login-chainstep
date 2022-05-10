@@ -6,11 +6,8 @@ import { Strategy as TwitterStrategy } from 'passport-twitter';
 import { Strategy as GithubStrategy } from 'passport-github2';
 import AuthService from '@/services/auth.service';
 import { AuthIdentity } from '@/interfaces/auth.interface';
-import UserService from '@/services/user.service';
-import { User } from '@/interfaces/user.interface';
 
 const authService = new AuthService();
-const userService = new UserService();
 
 passport.serializeUser((req, user, done) => {
   done(null, user);
