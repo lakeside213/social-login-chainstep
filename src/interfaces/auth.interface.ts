@@ -1,6 +1,6 @@
 export interface AuthIdentity {
   id: string;
-  name: string;
+  provider: AuthProvider;
 }
 
 export enum AuthProvider {
