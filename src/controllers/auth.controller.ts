@@ -4,7 +4,7 @@ import { User } from '@interfaces/user.interface';
 import { AuthProvider } from '@/interfaces/auth.interface';
 
 class AuthController {
-  public logInGoogleCallback = async (
+  public logInCallback = async (
     req: Request,
     res: Response,
     next: NextFunction,
@@ -33,6 +33,18 @@ class AuthController {
       });
     } catch (error) {
       //   console.log(error);
+      next(error);
+    }
+  };
+
+  public loginFailed = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      res.send('Login Failed');
+    } catch (error) {
       next(error);
     }
   };

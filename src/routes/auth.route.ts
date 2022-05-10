@@ -19,6 +19,11 @@ class AuthRoute implements Routes {
     );
 
     this.router.get(
+      `${this.path}login-failed`,
+      this.authController.loginFailed,
+    );
+
+    this.router.get(
       `${this.path}google/callback`,
       passport.authenticate('google', { scope: ['profile', 'email'] }),
       this.authController.logInCallback,
