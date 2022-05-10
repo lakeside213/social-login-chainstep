@@ -42,13 +42,17 @@ passport.use(
       consumerKey: process.env.TWITTER_CLIENT_ID,
       consumerSecret: process.env.TWITTER_CLIENT_SECRET,
       callbackURL: 'http://localhost:3000/auth/twitter/callback',
+      userProfileURL:
+        'https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true',
     },
     (token, tokenSecret, profile, cb) => {
-      console.log(profile);
-      process.nextTick(function () {
-        console.log(profile);
-        return cb(null, profile);
-      });
+      const identity: AuthIdentity = {
+        id: profile.id,
+        provider: profile.provider,
+      };
+      const email = profile.emails[0].value;
+      authService.login(email, identity);
+      return cb(null, profile);
     },
   ),
 );

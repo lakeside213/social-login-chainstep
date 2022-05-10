@@ -4,7 +4,7 @@ export interface AuthIdentity {
 }
 
 export enum AuthProvider {
-  GOOGLE = 'Google',
-  GITHUB = 'Github',
-  TWITTER = 'Twitter',
+  GOOGLE = 'google',
+  GITHUB = 'github',
+  TWITTER = 'twitter',
 }

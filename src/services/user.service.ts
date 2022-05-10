@@ -48,10 +48,12 @@ class UserService {
         }
       });
     }
+
+    console.log(this.users);
   }
 
   private doesIdentityExist(userId: string, provider: AuthProvider): boolean {
-    const user = this.findUserById(userId);
+    const user: User = this.findUserById(userId);
     return user.identities.some(
       (identity: AuthIdentity) => identity.provider === provider,
     );
