@@ -14,16 +14,18 @@ class AuthRoute implements Routes {
 
   private initializeRoutes() {
     this.router.get(
-      `${this.path}google`,
-      passport.authenticate('google', { scope: ['profile', 'email'] }),
+      `${this.path}login-success`,
+      this.authController.loginSuccess,
     );
     this.router.get(
       `${this.path}google/callback`,
-      passport.authenticate(
-        'google',
-        { scope: ['profile', 'email'] },
-        this.authController.logInGoogleCallback,
-      ),
+      passport.authenticate('google', { scope: ['profile', 'email'] }),
+      this.authController.logInGoogleCallback,
+    );
+
+    this.router.get(
+      `${this.path}google`,
+      passport.authenticate('google', { scope: ['profile', 'email'] }),
     );
   }
 }

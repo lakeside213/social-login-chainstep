@@ -21,8 +21,8 @@ passport.use(
       passReqToCallback: true,
     },
     (request, accessToken, refreshToken, profile, done) => {
-      console.log(profile, accessToken, refreshToken, 'passport-log-1');
-      done(null, profile, 'passport-log-2');
+      //   console.log(profile, accessToken, refreshToken, 'passport-log-1');
+      done(null, profile);
     },
   ),
 );
