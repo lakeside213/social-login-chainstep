@@ -23,10 +23,7 @@ class AuthController {
   ): Promise<void> => {
     try {
       const user: User = req.user;
-      res.render('pages/profile.ejs', {
-        email: user.email,
-        id: user.id,
-      });
+      res.render('pages/profile.ejs');
     } catch (error) {
       next(error);
     }

@@ -3,6 +3,7 @@ import 'dotenv/config';
 
 import { Strategy as GoogleStrategy } from 'passport-google-oauth2';
 import { Strategy as TwitterStrategy } from 'passport-twitter';
+import { Strategy as GithubStrategy } from 'passport-github2';
 import AuthService from '@/services/auth.service';
 import { AuthIdentity } from '@/interfaces/auth.interface';
 import UserService from '@/services/user.service';
@@ -57,6 +58,25 @@ passport.use(
       const email = profile.emails[0].value;
       authService.login(email, identity);
       return cb(null, profile);
+    },
+  ),
+);
+
+passport.use(
+  new GithubStrategy(
+    {
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      callbackURL: 'http://localhost:3000/auth/github/callback',
+    },
+    function (accessToken, refreshToken, profile, done) {
+      const identity: AuthIdentity = {
+        id: profile.id,
+        provider: profile.provider,
+      };
+      const email = profile.emails[0].value;
+      authService.login(email, identity);
+      return done(null, profile);
     },
   ),
 );

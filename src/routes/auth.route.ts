@@ -32,6 +32,15 @@ class AuthRoute implements Routes {
     );
 
     this.router.get(
+      `${this.path}github/callback`,
+      passport.authenticate('github', {
+        scope: ['profile', 'email'],
+        failureRedirect: `${this.path}login-failed`,
+      }),
+      this.authController.logInCallback,
+    );
+
+    this.router.get(
       `${this.path}twitter`,
       passport.authenticate('twitter', {
         scope: ['profile', 'email'],
@@ -41,6 +50,11 @@ class AuthRoute implements Routes {
     this.router.get(
       `${this.path}google`,
       passport.authenticate('google', { scope: ['profile', 'email'] }),
+    );
+
+    this.router.get(
+      `${this.path}github`,
+      passport.authenticate('github', { scope: ['profile', 'email'] }),
     );
 
     this.router.get(
