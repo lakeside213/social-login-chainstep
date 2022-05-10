@@ -17,12 +17,12 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: 'http://localhost:3000/google/callback',
+      callbackURL: 'http://localhost:3000/auth/google/callback',
       passReqToCallback: true,
     },
     (request, accessToken, refreshToken, profile, done) => {
-      console.log(profile, request, accessToken, refreshToken);
-      done(null, profile);
+      console.log(profile, accessToken, refreshToken, 'passport-log-1');
+      done(null, profile, 'passport-log-2');
     },
   ),
 );

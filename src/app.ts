@@ -6,6 +6,7 @@ import * as passportConfig from '@config/passport.config';
 
 import { renderFile } from 'ejs';
 import path from 'path';
+passportConfig;
 
 class App {
   public app: express.Application;
