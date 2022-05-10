@@ -44,12 +44,18 @@ class AuthController {
     }
   };
 
-  // public logOut = async (req: RequestWithUser, res: Response, next: NextFunction): Promise<void> => {
-  //   try {
-  //   } catch (error) {
-  //     next(error);
-  //   }
-  // };
+  public logOut = async (
+    req: RequestWithUser,
+    res: Response,
+    next: NextFunction,
+  ): Promise<void> => {
+    try {
+      req.logout();
+      res.redirect('/');
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export default AuthController;

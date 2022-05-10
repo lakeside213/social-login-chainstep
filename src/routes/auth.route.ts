@@ -51,6 +51,8 @@ class AuthRoute implements Routes {
       `${this.path}login-success`,
       this.authController.loginSuccess,
     );
+
+    this.router.get(`${this.path}logout`, this.authController.logOut);
   }
 }
 
