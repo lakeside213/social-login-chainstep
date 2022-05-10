@@ -27,7 +27,8 @@
       "@middlewares/*": ["middlewares/*"],
       "@routes/*": ["routes/*"],
       "@services/*": ["services/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@views/*": ["views/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.json", ".env"],
