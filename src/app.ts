@@ -2,6 +2,10 @@ import express from 'express';
 import cookieSession from 'cookie-session';
 import passport from 'passport';
 import { Routes } from '@interfaces/routes.interface';
+import * as passportConfig from '@config/passport.config';
+
+import { renderFile } from 'ejs';
+import path from 'path';
 
 class App {
   public app: express.Application;
@@ -13,7 +17,7 @@ class App {
     this.port = process.env.PORT || 3000;
     this.env = process.env.NODE_ENV || 'development';
 
-    this.app.set('view engine', 'ejs');
+    this.initializeEjsViews();
     this.initializeMiddlewares();
     this.initializeRoutes(routes);
   }
@@ -29,6 +33,12 @@ class App {
 
   public getServer() {
     return this.app;
+  }
+
+  private initializeEjsViews() {
+    this.app.set('views', path.join(__dirname, 'views'));
+    this.app.set('view engine', 'ejs');
+    this.app.engine('ejs', renderFile);
   }
 
   private initializeMiddlewares() {
