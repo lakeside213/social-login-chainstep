@@ -2,6 +2,7 @@ import passport from 'passport';
 import 'dotenv/config';
 
 import { Strategy as GoogleStrategy } from 'passport-google-oauth2';
+import { Strategy as TwitterStrategy } from 'passport-twitter';
 import AuthService from '@/services/auth.service';
 import { AuthIdentity } from '@/interfaces/auth.interface';
 
@@ -31,6 +32,23 @@ passport.use(
       };
       authService.login(profile.email, identity);
       done(null, profile);
+    },
+  ),
+);
+
+passport.use(
+  new TwitterStrategy(
+    {
+      consumerKey: process.env.TWITTER_CLIENT_ID,
+      consumerSecret: process.env.TWITTER_CLIENT_SECRET,
+      callbackURL: 'http://localhost:3000/auth/twitter/callback',
+    },
+    (token, tokenSecret, profile, cb) => {
+      console.log(profile);
+      process.nextTick(function () {
+        console.log(profile);
+        return cb(null, profile);
+      });
     },
   ),
 );

@@ -17,15 +17,29 @@ class AuthRoute implements Routes {
       `${this.path}login-success`,
       this.authController.loginSuccess,
     );
+
     this.router.get(
       `${this.path}google/callback`,
       passport.authenticate('google', { scope: ['profile', 'email'] }),
-      this.authController.logInGoogleCallback,
+      this.authController.logInCallback,
     );
 
     this.router.get(
       `${this.path}google`,
       passport.authenticate('google', { scope: ['profile', 'email'] }),
+    );
+
+    this.router.get(
+      `${this.path}twitter/callback`,
+      passport.authenticate('twitter', { scope: ['profile', 'email'] }),
+      this.authController.logInCallback,
+    );
+
+    this.router.get(
+      `${this.path}twitter`,
+      passport.authenticate('twitter', {
+        scope: ['profile', 'email'],
+      }),
     );
   }
 }
