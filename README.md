@@ -24,7 +24,6 @@ clone project and install dependencies
 git clone https://github.com/lakeside213/social-login-chainstep.git
 cd social-login-chainstep
 npm install
-npm run start
 ```
 
 create a .env file with the following keys and place the file in the root directory
