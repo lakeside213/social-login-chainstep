@@ -18,6 +18,18 @@ I used the MD5 hash of the email as the unique identifier for the user in my ema
 
 ## How to run
 
+create a .env file with the following keys and place the file in the root directory
+
+```
+PORT=3000
+GITHUB_CLIENT_ID="xxxxxxxxxxxxxxx"
+GITHUB_CLIENT_SECRET="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+GOOGLE_CLIENT_ID="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+GOOGLE_CLIENT_SECRET="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+TWITTER_CLIENT_ID="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+TWITTER_CLIENT_SECRET="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+```
+
 ```
 git clone https://github.com/lakeside213/social-login-chainstep.git
 cd social-login-chainstep
