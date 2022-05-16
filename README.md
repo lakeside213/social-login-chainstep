@@ -14,7 +14,7 @@ I llustrated the solution to the problem with the aid of the flowchart below:
 
 ### Comments
 
-I used the MD5 hash of the email as the unique identifier for the user in my email. So by "email exist" i mean does the MD5 email exist
+I used the MD5 hash of the email as the unique identifier for the user in my app. So by "email exist" i mean does the MD5 email exist
 
 ## How to run
 
