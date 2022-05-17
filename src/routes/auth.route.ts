@@ -54,7 +54,7 @@ class AuthRoute implements Routes {
 
     this.router.get(
       `${this.path}github`,
-      passport.authenticate('github', { scope: ['profile', 'email'] }),
+      passport.authenticate('github', { scope: ['user:email'] }),
     );
 
     this.router.get(
